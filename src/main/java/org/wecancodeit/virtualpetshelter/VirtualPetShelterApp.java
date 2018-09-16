@@ -18,37 +18,10 @@ public class VirtualPetShelterApp {
 		int userSelection = 0;
 		while (userSelection != 8) {
 			
-		/*	
-			//Check if horse is asleep
-			if (yourHorse.getIsAsleep()) {
-				System.out.println(yourHorse.getName() + " is asleep. Press 1 to continue.");
-				userSelection = input.nextInt();
-				input.nextLine();
-				if (userSelection == 1) {
-					yourHorse.wake();
-					System.out.println(yourHorse.getName() + " woke up!");
-					System.out.println("Press enter to continue");
-					input.nextLine();
-					continue;
-				} else {
-					continue;
-				}
-			}*/
-			
-			//Print horse's stats
+			//Print all the horses' stats
 			System.out.println();
 			System.out.println("Stats for your horses:");
-			for (VirtualPet horse : horseShelter.getAllPets()) {
-				System.out.println(horse.getName() +
-						"\t" + horse.getHungerLevel() +
-						"\t" + horse.getThirstLevel() +
-						"\t" + horse.getBoredomLevel() +
-						"\t" + horse.getSleepinessLevel()
-						);
-			}
-			/*System.out.println(horseShelter.printStats());*/
-			System.out.println();
-			
+			horseShelter.printStats();
 			System.out.println();
 			
 			//List options and ask user to select one
@@ -75,10 +48,16 @@ public class VirtualPetShelterApp {
 				System.out.println("Press enter to continue");
 				input.nextLine();
 			} else if (userSelection == 2) {
+				System.out.println(horseShelter.printNamesAndDescriptions());
 				System.out.println("Enter the name of the horse that will be adopted out.");
 				String horseToBeAdoptedOut = input.nextLine();
-				horseShelter.removePet(horseToBeAdoptedOut);
-				System.out.println(horseToBeAdoptedOut + " has been adopted.");
+				if (horseShelter.hasPet(horseToBeAdoptedOut)) {
+					horseShelter.removePet(horseToBeAdoptedOut);
+					System.out.println(horseToBeAdoptedOut + " has been adopted.");
+				} else {
+					System.out.println("That horse is not in the shelter.");
+				}
+				
 				System.out.println("Press enter to continue");
 				input.nextLine();
 			} else if (userSelection == 3) {
@@ -105,21 +84,32 @@ public class VirtualPetShelterApp {
 				System.out.println("You've watered all the horses.");
 			}
 			else if (userSelection == 5) {
+				System.out.println(horseShelter.printNamesAndDescriptions());
 				System.out.println("Enter the name of the horse you'd like to play with.");
 				String horseToPlayWith = input.nextLine();
-				horseShelter.playWithPet(horseToPlayWith);
-				System.out.println("You played with " + horseToPlayWith + ". " + horseToPlayWith + " is less bored now, but more tired." );
+				if (horseShelter.hasPet(horseToPlayWith)) {
+					horseShelter.playWithPet(horseToPlayWith);
+					System.out.println("You played with " + horseToPlayWith + ". " + horseToPlayWith + " is less bored now, but more tired." );
+				} else {
+					System.out.println("That horse is not in the shelter.");
+				}
+				
 				System.out.println("Press enter to continue");
 				input.nextLine();
 			} else if (userSelection == 6) {
+				System.out.println(horseShelter.printNamesAndDescriptions());
 				System.out.println("Enter the name of the horse you'd like to move.");
 				String horseToMove = input.nextLine();
-				if (horseShelter.getPet(horseToMove).getIsInPasture()) {
-					System.out.println("You put " + horseToMove + " in the barn.");
-					horseShelter.movePet(horseToMove);
+				if (horseShelter.hasPet(horseToMove)) {
+					if (horseShelter.getPet(horseToMove).getIsInPasture()) {
+						System.out.println("You put " + horseToMove + " in the barn.");
+						horseShelter.movePet(horseToMove);
+					} else {
+						System.out.println("You put " + horseToMove + " in the pasture.");
+						horseShelter.movePet(horseToMove);
+					}
 				} else {
-					System.out.println("You put " + horseToMove + " in the pasture.");
-					horseShelter.movePet(horseToMove);
+					System.out.println("That horse is not in the shelter.");
 				}
 				System.out.println("Press enter to continue");
 				input.nextLine();
