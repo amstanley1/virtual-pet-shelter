@@ -21,7 +21,7 @@ public class VirtualPetShelterApp {
 			//Print all the horses' stats
 			System.out.println();
 			System.out.println("Stats for your horses:");
-			horseShelter.printStats();
+			System.out.println(horseShelter.printStats());
 			System.out.println();
 			
 			//List options and ask user to select one
@@ -82,6 +82,8 @@ public class VirtualPetShelterApp {
 			} else if (userSelection == 4) {
 				horseShelter.waterAllPets();
 				System.out.println("You've watered all the horses.");
+				System.out.println("Press enter to continue");
+				input.nextLine();
 			}
 			else if (userSelection == 5) {
 				System.out.println(horseShelter.printNamesAndDescriptions());
