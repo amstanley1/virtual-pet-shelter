@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public class VirtualPetShelter {
 	String name;
 	Map<String, VirtualPet> pets;
@@ -67,18 +69,64 @@ public class VirtualPetShelter {
 	public void tickAll() {
 		Collection<VirtualPet> petsCollection = pets.values();
 		for (VirtualPet pet : petsCollection) {
+			if (pet.getIsAsleep()) {
+				pet.wake();
+			}
 			pet.tick();
 		}
 		
 	}
 	
-	public String printStats() {
-		System.out.println("Name     |Hunger |Thirst |Boredom |Sleepiness");
-		System.out.println("---------|-------|-------|--------|----------");
+	public void printStats() {
+		String statsString = String.format("%-10s%-10s%-10s%-10s%-12s%-10s%-10s%n", "Name", "|Hunger", "|Thirst", "|Boredom", "|Sleepiness", "|Location", "|State" );
+		statsString += String.format("%-10s%-10s%-10s%-10s%-12s%-10s%-10s%n", "----------", "|---------", "|---------", "|---------", "|-----------", "|---------", "|---------" );
+
 		Collection<VirtualPet> petsCollection = pets.values();
+		String formatString = "";
+		String contentString = "";
+			for (VirtualPet pet : petsCollection) {
+				
+				
+				
+				System.out.format("%-10s%-10s%-10s%-10s%-12s", pet.getName(), "|" + pet.getHungerLevel(), "|" + pet.getThirstLevel(),"|" + pet.getBoredomLevel(), "|" + pet.getSleepinessLevel());
+				
+				if (pet.getIsInPasture()) {
+					System.out.format("%-10s", "|Pasture");
+				} else {
+					System.out.format("%-10s", "|Barn");
+				}
+				if (pet.getIsAsleep()) {
+					System.out.format("%-10s%n", "|Asleep");
+
+				} else {
+					System.out.format("%-10s%n", "|Awake");
+
+				}
+					
+			}
+
+	}
+	
+	public String printNamesAndDescriptions() {
+		Collection<VirtualPet> petsCollection = pets.values();
+		String petsString = "";
 		for (VirtualPet pet : petsCollection) {
-			System.out.println("     |Hunger |Thirst |Boredom |Sleepiness");
+			petsString += String.format("%-10s%-50s%n", pet.getName(), "|" + pet.getDescription());
 		}
-		return "";
+		return petsString;
+	}
+
+	public boolean hasPet(String name) {
+		VirtualPet pet = pets.get(name);
+		boolean hasPet;
+	 	if (pet == null) {
+			hasPet = false;
+		}
+		else {
+			hasPet = true;
+		}
+		
+		return hasPet;
+		
 	}
 }

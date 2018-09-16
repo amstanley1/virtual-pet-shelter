@@ -34,7 +34,7 @@ public class VirtualPetShelterTest {
 	}
 	
 	@Test
-	public void shouldBeAbleToAddPetsToVirtualPetShelter() {
+	public void shouldBeAbleToAddPetToVirtualPetShelter() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
 		petShelter.addPet("Helga", "A horse", 4, 5, 3, 8);
 		boolean containsPet = false;
@@ -47,7 +47,7 @@ public class VirtualPetShelterTest {
 	}
 	
 	@Test
-	public void shouldBeAbleToAdoptOutPet() {
+	public void shouldBeAbleToRemovePet() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
 		petShelter.addPet("Helga", "A horse", 4, 5, 3, 8);
 		petShelter.removePet("Helga");
@@ -147,6 +147,13 @@ public class VirtualPetShelterTest {
 		assertTrue(helgaSleepinessLevelAfter == helgaSleepinessLevelBefore + 1);
 		assertTrue(helgaThirstLevelAfter == helgaThirstLevelBefore + 1);
 		assertTrue(helgaHungerLevelAfter == helgaHungerLevelBefore + 1);
+	}
+	
+	public void shouldBeAbleToCheckIfHasPet() {
+		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
+		petShelter.addPet("Helga", "A horse", 4, 5, 3, 8);
+		assertTrue(petShelter.hasPet("Horace"));
+		assertFalse(petShelter.hasPet("Holly"));
 	}
 	
 
