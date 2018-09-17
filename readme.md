@@ -1,11 +1,10 @@
 //refactor
-//compare to example
-//Stretch tasks
-
+//DNA Stretch task?
 
 Check:
-comments
+run through
 readme
+comments
 communication between Classes
 
 Emboldened by your recent success with caring for a stray horse you found, you
@@ -16,7 +15,7 @@ First you will need to name your horse shelter.
 Each round the game will print a table with the stats for all the horses in your shelter.
 These stats/needs will range from 1-10. When a horse's sleepiness gets above 8, it will
 fall asleep.
-Then present you with 6 options:
+The game will present you with 6 options:
 
 1. Take in a new horse - add a new horse to the shelter by entering it's name 
 and description

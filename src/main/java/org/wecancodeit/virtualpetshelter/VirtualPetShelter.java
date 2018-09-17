@@ -30,14 +30,12 @@ public class VirtualPetShelter {
 	// Add pet
 	public void addPet(String name, String description, int hungerLevel, int thirstLevel, int sleepinessLevel,
 			int boredomLevel) {
-		VirtualPet pet = new VirtualPet(name, description, hungerLevel, thirstLevel, sleepinessLevel, boredomLevel);
-		pets.put(name, pet);
+		pets.put(name, new VirtualPet(name, description, hungerLevel, thirstLevel, sleepinessLevel, boredomLevel));
 
 	}
 
 	public void addPet(String name, String description) {
-		VirtualPet pet = new VirtualPet(name, description);
-		pets.put(name, pet);
+		pets.put(name, new VirtualPet(name, description));
 	}
 
 	// Remove pet
@@ -47,16 +45,14 @@ public class VirtualPetShelter {
 
 	// feed all pets
 	public void feedAllPets(int userSelectedFood) {
-		Collection<VirtualPet> petsCollection = pets.values();
-		for (VirtualPet pet : petsCollection) {
+		for (VirtualPet pet : pets.values()) {
 			pet.feed(userSelectedFood);
 		}
 	}
 
 	// water all pets
 	public void waterAllPets() {
-		Collection<VirtualPet> petsCollection = pets.values();
-		for (VirtualPet pet : petsCollection) {
+		for (VirtualPet pet : pets.values()) {
 			pet.water();
 		}
 	}
@@ -73,8 +69,7 @@ public class VirtualPetShelter {
 
 	// call tick on all pets to move time in game
 	public void tickAll() {
-		Collection<VirtualPet> petsCollection = pets.values();
-		for (VirtualPet pet : petsCollection) {
+		for (VirtualPet pet : pets.values()) {
 			if (pet.getIsAsleep()) {
 				pet.wake();
 			}
@@ -89,8 +84,7 @@ public class VirtualPetShelter {
 		statsString += String.format("%-10s%-10s%-10s%-10s%-12s%-10s%-10s%n", "----------", "|---------", "|---------",
 				"|---------", "|-----------", "|---------", "|---------");
 
-		Collection<VirtualPet> petsCollection = pets.values();
-		for (VirtualPet pet : petsCollection) {
+		for (VirtualPet pet : pets.values()) {
 			statsString += String.format("%-10s%-10s%-10s%-10s%-12s", pet.getName(), "|" + pet.getHungerLevel(),
 					"|" + pet.getThirstLevel(), "|" + pet.getBoredomLevel(), "|" + pet.getSleepinessLevel());
 
@@ -110,9 +104,8 @@ public class VirtualPetShelter {
 
 	// Return name and description for each pet as formatted String
 	public String printNamesAndDescriptions() {
-		Collection<VirtualPet> petsCollection = pets.values();
 		String petsString = String.format("%-10s%-50s%n", "Name", "Description");
-		for (VirtualPet pet : petsCollection) {
+		for (VirtualPet pet : pets.values()) {
 			petsString += String.format("%-10s%-50s%n", pet.getName(), "|" + pet.getDescription());
 		}
 		return petsString;
@@ -120,13 +113,16 @@ public class VirtualPetShelter {
 
 	// Check of Map has specific pet
 	public boolean hasPet(String name) {
-		VirtualPet pet = pets.get(name);
 		boolean hasPet;
-		if (pet == null) {
+		if (pets.get(name) == null) {
 			hasPet = false;
 		} else {
 			hasPet = true;
 		}
 		return hasPet;
+	}
+
+	public int getHorseCount() {
+		return pets.size();
 	}
 }

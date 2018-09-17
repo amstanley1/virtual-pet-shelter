@@ -155,4 +155,10 @@ public class VirtualPetShelterTest {
 		assertTrue(petShelter.hasPet("Horace"));
 		assertFalse(petShelter.hasPet("Holly"));
 	}
+	
+	public void shouldBeAbleToGetHorseCount() {
+		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
+		petShelter.addPet("Helga", "A horse", 4, 5, 3, 8);
+		assertTrue(petShelter.getHorseCount() == 2);
+	}
 }

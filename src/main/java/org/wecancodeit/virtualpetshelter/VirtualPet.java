@@ -16,39 +16,39 @@ public class VirtualPet {
 
 	// Getters
 	public boolean getIsAsleep() {
-		return this.isAsleep;
+		return isAsleep;
 	}
 
 	public boolean getIsInPasture() {
-		return this.isInPasture;
+		return isInPasture;
 	}
 
 	public boolean getHasRunAway() {
-		return this.hasRunAway;
+		return hasRunAway;
 	}
 
 	public int getHungerLevel() {
-		return this.hungerLevel;
+		return hungerLevel;
 	}
 
 	public int getSleepinessLevel() {
-		return this.sleepinessLevel;
+		return sleepinessLevel;
 	}
 
 	public int getBoredomLevel() {
-		return this.boredomLevel;
+		return boredomLevel;
 	}
 
 	public int getThirstLevel() {
-		return this.thirstLevel;
+		return thirstLevel;
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	// Constructors
@@ -70,24 +70,24 @@ public class VirtualPet {
 	public void feed(int userSelectedFood) {
 		switch (userSelectedFood) {
 		case 1:
-			if (this.hungerLevel < 5) {
-				this.hungerLevel = 0;
+			if (hungerLevel < 5) {
+				hungerLevel = 0;
 			} else {
-				this.hungerLevel = this.hungerLevel - 5;
+				hungerLevel -= 5;
 			}
 			break;
 		case 2:
-			if (this.hungerLevel < 3) {
-				this.hungerLevel = 0;
+			if (hungerLevel < 3) {
+				hungerLevel = 0;
 			} else {
-				this.hungerLevel = this.hungerLevel - 3;
+				hungerLevel -= 3;
 			}
 			break;
 		case 3:
-			if (this.hungerLevel < 1) {
-				this.hungerLevel = 0;
+			if (hungerLevel < 1) {
+				hungerLevel = 0;
 			} else {
-				this.hungerLevel -= 1;
+				hungerLevel -= 1;
 			}
 			break;
 		}
@@ -95,40 +95,40 @@ public class VirtualPet {
 
 	// Give pet water
 	public void water() {
-		this.thirstLevel -= 4;
+		thirstLevel -= 4;
 	}
 
 	// Play with pet, lowers boredom level
 	public void playWith() {
-		if (this.boredomLevel < 3) {
-			this.boredomLevel = 0;
+		if (boredomLevel < 3) {
+			boredomLevel = 0;
 		} else {
-			this.boredomLevel -= 3;
+			boredomLevel -= 3;
 		}
-		if (this.sleepinessLevel > 8) {
-			this.sleepinessLevel = 10;
+		if (sleepinessLevel > 8) {
+			sleepinessLevel = 10;
 		} else {
-			this.sleepinessLevel = this.sleepinessLevel + 2;
+			sleepinessLevel += 2;
 		}
 	}
 
 	// move pet to pasture if in barn, or to barn if in pasture by toggling the
 	// boolean isInPasture property
 	public void move() {
-		if (this.isInPasture) {
-			this.isInPasture = false;
-			if (this.boredomLevel > 8) {
-				this.boredomLevel = 10;
+		if (isInPasture) {
+			isInPasture = false;
+			if (boredomLevel > 8) {
+				boredomLevel = 10;
 			} else {
-				this.boredomLevel = this.boredomLevel + 2;
+				boredomLevel += 2;
 			}
 		} else {
-			if (this.boredomLevel < 3) {
-				this.boredomLevel = 0;
+			if (boredomLevel < 3) {
+				boredomLevel = 0;
 			} else {
-				this.boredomLevel -= 3;
+				boredomLevel -= 3;
 			}
-			this.isInPasture = true;
+			isInPasture = true;
 		}
 	}
 
@@ -136,21 +136,17 @@ public class VirtualPet {
 	// will
 	// go to sleep, if it's hunger level is above 8, it will run away.
 	public void tick() {
-		if (this.hungerLevel > 8) {
-			this.hasRunAway = true;
-		} else {
-			this.hungerLevel++;
+		if (hungerLevel < 10) {
+			hungerLevel++;
 		}
-		if (this.thirstLevel > 8) {
-			this.hasRunAway = true;
-		} else {
-			this.thirstLevel++;
+		if (thirstLevel < 10) {
+			thirstLevel++;
 		}
-		if (this.boredomLevel < 10) {
-			this.boredomLevel++;
+		if (boredomLevel < 10) {
+			boredomLevel++;
 		}
-		this.sleepinessLevel++;
-		if (this.sleepinessLevel > 8) {
+		sleepinessLevel++;
+		if (sleepinessLevel > 8) {
 			this.sleep();
 		}
 	}
@@ -158,31 +154,12 @@ public class VirtualPet {
 	// sleep method, lowers sleepiness level, sets boolean isAsleep
 	// to true
 	public void sleep() {
-		this.sleepinessLevel -= 5;
-		this.isAsleep = true;
+		sleepinessLevel -= 5;
+		isAsleep = true;
 	}
 
 	// wake method, sets boolean isAsleep to false
 	public void wake() {
-		this.isAsleep = false;
-	}
-
-	// prints pet, prints with fence if horse isInPasture is true
-	public void printHorse() {
-		if (this.isInPasture) {
-			System.out.println("                         ^^   ");
-			System.out.println("                  ______/''\\");
-			System.out.println("                 #       /\\ \\          ||--||--||--||");
-			System.out.println("                # ||___||  ''          ||--||--||--||");
-			System.out.println("                  ||   ||              ||--||--||--||");
-		} else {
-
-			System.out.println("                         ^^   ");
-			System.out.println("                  ______/''\\");
-			System.out.println("                 #       /\\ \\");
-			System.out.println("                # ||___||  '' ");
-			System.out.println("                  ||   ||");
-
-		}
+		isAsleep = false;
 	}
 }
