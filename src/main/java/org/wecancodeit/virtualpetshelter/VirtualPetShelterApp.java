@@ -2,9 +2,6 @@ package org.wecancodeit.virtualpetshelter;
 
 import java.util.Scanner;
 
-
-
-
 public class VirtualPetShelterApp {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
@@ -17,14 +14,14 @@ public class VirtualPetShelterApp {
 		System.out.println("Welcome to " + horseShelter.getName());
 		int userSelection = 0;
 		while (userSelection != 8) {
-			
-			//Print all the horses' stats
+
+			// Print all the horses' stats
 			System.out.println();
 			System.out.println("Stats for your horses:");
 			System.out.println(horseShelter.printStats());
 			System.out.println();
-			
-			//List options and ask user to select one
+
+			// List options and ask user to select one
 			System.out.println("1. Take in a new horse");
 			System.out.println("2. Adopt out a horse");
 			System.out.println("3. Feed the horses");
@@ -36,8 +33,8 @@ public class VirtualPetShelterApp {
 			System.out.println("What number do you want to select?");
 			userSelection = input.nextInt();
 			input.nextLine();
-			
-			//Take action depending on user selected option
+
+			// Take action depending on user selected option
 			if (userSelection == 1) {
 				System.out.println("Enter the new horse's name");
 				String newHorseName = input.nextLine();
@@ -57,7 +54,7 @@ public class VirtualPetShelterApp {
 				} else {
 					System.out.println("That horse is not in the shelter.");
 				}
-				
+
 				System.out.println("Press enter to continue");
 				input.nextLine();
 			} else if (userSelection == 3) {
@@ -78,24 +75,22 @@ public class VirtualPetShelterApp {
 				}
 				System.out.println("Press enter to continue");
 				input.nextLine();
-
 			} else if (userSelection == 4) {
 				horseShelter.waterAllPets();
 				System.out.println("You've watered all the horses.");
 				System.out.println("Press enter to continue");
 				input.nextLine();
-			}
-			else if (userSelection == 5) {
+			} else if (userSelection == 5) {
 				System.out.println(horseShelter.printNamesAndDescriptions());
 				System.out.println("Enter the name of the horse you'd like to play with.");
 				String horseToPlayWith = input.nextLine();
 				if (horseShelter.hasPet(horseToPlayWith)) {
 					horseShelter.playWithPet(horseToPlayWith);
-					System.out.println("You played with " + horseToPlayWith + ". " + horseToPlayWith + " is less bored now, but more tired." );
+					System.out.println("You played with " + horseToPlayWith + ". " + horseToPlayWith
+							+ " is less bored now, but more tired.");
 				} else {
 					System.out.println("That horse is not in the shelter.");
 				}
-				
 				System.out.println("Press enter to continue");
 				input.nextLine();
 			} else if (userSelection == 6) {
@@ -116,14 +111,13 @@ public class VirtualPetShelterApp {
 				System.out.println("Press enter to continue");
 				input.nextLine();
 			}
-			
-			//call tick method to pass time in the game
-			horseShelter.tickAll();
 
+			// call tick method to pass time in the game
+			horseShelter.tickAll();
 		}
-		
+
 		System.out.println("You have quit the game. Goodbye.");
-		
+
 		input.close();
 	}
 }

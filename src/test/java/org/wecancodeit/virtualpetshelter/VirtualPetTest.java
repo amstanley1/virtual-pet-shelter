@@ -78,26 +78,23 @@ public class VirtualPetTest {
 		String name = pet.getName();
 		assertTrue(name.equals("Horace"));
 	}
-	
 
 	@Test
 	public void shouldBeAbleToGetDescription() {
 		String name = pet.getDescription();
 		assertTrue(name.equals("A hippo"));
 	}
-	
+
 	@Test
 	public void shouldBeAbleToGetThirstLevel() {
 		int thirstLevel = pet.getThirstLevel();
 		assertTrue(thirstLevel == 4);
 	}
-	
+
 	@Test
 	public void shouldBeAbleToWaterPet() {
 		int originalThirstLevel = pet.getThirstLevel();
 		pet.water();
 		assertTrue(originalThirstLevel - 4 == pet.getThirstLevel());
 	}
-	
-	
 }

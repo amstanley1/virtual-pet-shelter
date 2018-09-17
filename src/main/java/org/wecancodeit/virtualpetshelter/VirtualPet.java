@@ -2,8 +2,8 @@ package org.wecancodeit.virtualpetshelter;
 
 public class VirtualPet {
 
-	// Fields for name, description, hunger level, sleepiness level, boredom level, state of
-	// sleep, and location
+	// Fields for name, description, hunger level, sleepiness level, boredom level,
+	// state of sleep, and location
 	private String name;
 	private String description;
 	private int hungerLevel;
@@ -38,7 +38,7 @@ public class VirtualPet {
 	public int getBoredomLevel() {
 		return this.boredomLevel;
 	}
-	
+
 	public int getThirstLevel() {
 		return this.thirstLevel;
 	}
@@ -46,13 +46,14 @@ public class VirtualPet {
 	public String getName() {
 		return this.name;
 	}
-	
+
 	public String getDescription() {
 		return this.description;
 	}
 
 	// Constructors
-	public VirtualPet(String name, String description, int hungerLevel, int thirstLevel, int sleepinessLevel, int boredomLevel) {
+	public VirtualPet(String name, String description, int hungerLevel, int thirstLevel, int sleepinessLevel,
+			int boredomLevel) {
 		this.name = name;
 		this.description = description;
 		this.hungerLevel = hungerLevel;
@@ -60,7 +61,7 @@ public class VirtualPet {
 		this.boredomLevel = boredomLevel;
 		this.thirstLevel = thirstLevel;
 	}
-	
+
 	public VirtualPet(String name, String description) {
 		this(name, description, 5, 5, 5, 5);
 	}
@@ -91,8 +92,8 @@ public class VirtualPet {
 			break;
 		}
 	}
-	
-	//Give pet water
+
+	// Give pet water
 	public void water() {
 		this.thirstLevel -= 4;
 	}
@@ -131,8 +132,9 @@ public class VirtualPet {
 		}
 	}
 
-	// makes time pass, raises pet's needs, if pet sleepiness level is above 8 it will
-	//go to sleep, if it's hunger level is above 8, it will run away.
+	// makes time pass, raises pet's needs, if pet sleepiness level is above 8 it
+	// will
+	// go to sleep, if it's hunger level is above 8, it will run away.
 	public void tick() {
 		if (this.hungerLevel > 8) {
 			this.hasRunAway = true;
@@ -183,7 +185,4 @@ public class VirtualPet {
 
 		}
 	}
-
-	
-
 }

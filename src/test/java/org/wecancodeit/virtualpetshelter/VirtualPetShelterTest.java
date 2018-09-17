@@ -11,28 +11,28 @@ import org.junit.Test;
 
 public class VirtualPetShelterTest {
 	VirtualPetShelter petShelter;
-	
+
 	@Before
 	public void setup() {
 		petShelter = new VirtualPetShelter("My Test Pet Shelter");
 	}
-	
+
 	@Test
 	public void shouldBeAbleToCreateNewPetShelter() {
 		VirtualPetShelter shelter = new VirtualPetShelter("My Test Pet Shelter");
 	}
-	
+
 	@Test
 	public void shouldBeAbleToGetAllPets() {
 		Collection<VirtualPet> petsList = petShelter.getAllPets();
 		assertTrue(petsList.isEmpty());
 	}
-	
+
 	@Test
 	public void shouldBeAbleToGetName() {
 		assertTrue(petShelter.getName().equals("My Test Pet Shelter"));
 	}
-	
+
 	@Test
 	public void shouldBeAbleToAddPetToVirtualPetShelter() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
@@ -41,11 +41,11 @@ public class VirtualPetShelterTest {
 		for (VirtualPet pet : petShelter.getAllPets()) {
 			if (pet.getName().equals("Helga")) {
 				containsPet = true;
-			} 
+			}
 		}
 		assertTrue(containsPet);
 	}
-	
+
 	@Test
 	public void shouldBeAbleToRemovePet() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
@@ -55,11 +55,11 @@ public class VirtualPetShelterTest {
 		for (VirtualPet pet : petShelter.getAllPets()) {
 			if (pet.getName().equals("Helga")) {
 				containsPet = true;
-			} 
+			}
 		}
 		assertFalse(containsPet);
 	}
-	
+
 	@Test
 	public void shouldBeAbleToGetPet() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
@@ -68,7 +68,7 @@ public class VirtualPetShelterTest {
 		boolean containsPet = false;
 		assertTrue(helga.getName().equals("Helga"));
 	}
-	
+
 	@Test
 	public void shouldBeAbleToFeedAllPets() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
@@ -79,9 +79,9 @@ public class VirtualPetShelterTest {
 		int horaceHungerLevelAfter = petShelter.getPet("Horace").getHungerLevel();
 		int helgaHungerLevelAfter = petShelter.getPet("Helga").getHungerLevel();
 		assertTrue(helgaHungerLevelAfter == helgaHungerLevelBefore - 3);
-		assertTrue(horaceHungerLevelAfter == horaceHungerLevelBefore - 3);		
+		assertTrue(horaceHungerLevelAfter == horaceHungerLevelBefore - 3);
 	}
-	
+
 	@Test
 	public void shouldBeAbleToWaterAllPets() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
@@ -92,9 +92,9 @@ public class VirtualPetShelterTest {
 		int horaceThirstLevelAfter = petShelter.getPet("Horace").getThirstLevel();
 		int helgaThirstLevelAfter = petShelter.getPet("Helga").getThirstLevel();
 		assertTrue(helgaThirstLevelAfter == helgaThirstLevelBefore - 4);
-		assertTrue(horaceThirstLevelAfter == horaceThirstLevelBefore - 4);		
+		assertTrue(horaceThirstLevelAfter == horaceThirstLevelBefore - 4);
 	}
-	
+
 	@Test
 	public void shouldBeAbleToPlayWithPet() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
@@ -105,9 +105,9 @@ public class VirtualPetShelterTest {
 		int horaceBoredomLevelAfter = petShelter.getPet("Horace").getBoredomLevel();
 		int horaceSleepinessLevelAfter = petShelter.getPet("Horace").getSleepinessLevel();
 		assertTrue(horaceBoredomLevelAfter == horaceBoredomLevelBefore - 3);
-		assertTrue(horaceSleepinessLevelAfter == horaceSleepinessLevelBefore + 2);	
+		assertTrue(horaceSleepinessLevelAfter == horaceSleepinessLevelBefore + 2);
 	}
-	
+
 	@Test
 	public void shouldBeAbleToMovePet() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
@@ -117,7 +117,7 @@ public class VirtualPetShelterTest {
 		int helgaBoredomLevelAfter = petShelter.getPet("Helga").getBoredomLevel();
 		assertTrue(helgaBoredomLevelAfter == helgaBoredomLevelBefore - 3);
 	}
-	
+
 	@Test
 	public void tickMethodShouldIncrementAndDecrementPropertiesForAllPets() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
@@ -148,13 +148,11 @@ public class VirtualPetShelterTest {
 		assertTrue(helgaThirstLevelAfter == helgaThirstLevelBefore + 1);
 		assertTrue(helgaHungerLevelAfter == helgaHungerLevelBefore + 1);
 	}
-	
+
 	public void shouldBeAbleToCheckIfHasPet() {
 		petShelter.addPet("Horace", "A hippo", 5, 4, 6, 7);
 		petShelter.addPet("Helga", "A horse", 4, 5, 3, 8);
 		assertTrue(petShelter.hasPet("Horace"));
 		assertFalse(petShelter.hasPet("Holly"));
 	}
-	
-
 }
