@@ -1,12 +1,3 @@
-//refactor
-//DNA Stretch task?
-
-Check:
-run through
-readme
-comments
-communication between Classes
-
 Emboldened by your recent success with caring for a stray horse you found, you
 decide to open a horse shelter for horses in need of a home.
 

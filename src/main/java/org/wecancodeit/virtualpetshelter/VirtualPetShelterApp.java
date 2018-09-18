@@ -17,11 +17,11 @@ public class VirtualPetShelterApp {
 			if (horseShelter.getHorseCount() == 0) {
 				System.out.println("There are no horses in your shelter.");
 			} else {
-			// Print all the horses' stats
-			System.out.println();
-			System.out.println("Stats for your horses:");
-			System.out.println(horseShelter.printStats());
-			
+				// Print all the horses' stats
+				System.out.println();
+				System.out.println("Stats for your horses:");
+				System.out.println(horseShelter.printStats());
+
 			}
 			System.out.println();
 			// List options and ask user to select one

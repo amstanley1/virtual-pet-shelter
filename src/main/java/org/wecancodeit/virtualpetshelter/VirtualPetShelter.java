@@ -104,7 +104,8 @@ public class VirtualPetShelter {
 
 	// Return name and description for each pet as formatted String
 	public String printNamesAndDescriptions() {
-		String petsString = String.format("%-10s%-50s%n", "Name", "Description");
+		String petsString = String.format("%-10s%-50s%n", "Name", "|Description");
+		petsString += String.format("%-10s%-50s%n", "-----", "|------------");
 		for (VirtualPet pet : pets.values()) {
 			petsString += String.format("%-10s%-50s%n", pet.getName(), "|" + pet.getDescription());
 		}
