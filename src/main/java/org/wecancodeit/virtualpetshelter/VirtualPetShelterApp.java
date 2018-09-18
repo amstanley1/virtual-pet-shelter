@@ -7,20 +7,23 @@ public class VirtualPetShelterApp {
 		Scanner input = new Scanner(System.in);
 
 		System.out.println("Emboldened by your recent success in taking care of a stray horse,"
-				+ " you decide to help other horses in need by starting a horse shelter.");
+				+ " you decide to help other horses in need by opening a horse shelter.");
 		System.out.println("What will you name your horse shelter?");
 		String name = input.nextLine();
 		VirtualPetShelter horseShelter = new VirtualPetShelter(name);
 		System.out.println("Welcome to " + horseShelter.getName());
 		int userSelection = 0;
 		while (userSelection != 8) {
+			if (horseShelter.getHorseCount() == 0) {
+				System.out.println("There are no horses in your shelter.");
+			} else {
+				// Print all the horses' stats
+				System.out.println();
+				System.out.println("Stats for your horses:");
+				System.out.println(horseShelter.printStats());
 
-			// Print all the horses' stats
+			}
 			System.out.println();
-			System.out.println("Stats for your horses:");
-			System.out.println(horseShelter.printStats());
-			System.out.println();
-
 			// List options and ask user to select one
 			System.out.println("1. Take in a new horse");
 			System.out.println("2. Adopt out a horse");

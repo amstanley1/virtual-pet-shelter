@@ -1,13 +1,3 @@
-//refactor
-//compare to example
-//Stretch tasks
-
-
-Check:
-comments
-readme
-communication between Classes
-
 Emboldened by your recent success with caring for a stray horse you found, you
 decide to open a horse shelter for horses in need of a home.
 
@@ -16,7 +6,7 @@ First you will need to name your horse shelter.
 Each round the game will print a table with the stats for all the horses in your shelter.
 These stats/needs will range from 1-10. When a horse's sleepiness gets above 8, it will
 fall asleep.
-Then present you with 6 options:
+The game will present you with 6 options:
 
 1. Take in a new horse - add a new horse to the shelter by entering it's name 
 and description
